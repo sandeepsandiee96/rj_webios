@@ -6,7 +6,7 @@ Class Setting_model extends CI_Model
  function basicSetting()
  {
  // fetch basic loaders
- $query=$this->db->query(" select * from savsoftquiz_setting order by order_by asc");
+ $query=$this->db->query(" select * from e_learn_setting order by order_by asc");
  $set=$query->result_array();
  
  $setting=array();
@@ -39,7 +39,7 @@ Class Setting_model extends CI_Model
 	 $error=0;
 	 	foreach($_POST as $k => $val){
 			$this->db->where('setting_name',$k);
-			if(!$this->db->update('savsoftquiz_setting',array('setting_value'=>$val))){
+			if(!$this->db->update('e_learn_setting',array('setting_value'=>$val))){
 				$error+=1;
 			}
 		}

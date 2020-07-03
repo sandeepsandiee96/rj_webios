@@ -7,7 +7,7 @@ Class Advertisment_model extends CI_Model
 		
 	  $this->db->limit($this->config->item('number_of_rows'),$limit);
 		$this->db->order_by('add_id','desc');
-		$query=$this->db->get('savsoft_add');
+		$query=$this->db->get('e_learn_add');
 		return $query->result_array();
 		
 	 
@@ -15,7 +15,7 @@ Class Advertisment_model extends CI_Model
  
  function get_edit_advertisment($add_id){
 		 $this->db->where('add_id',$add_id);
-		 $query=$this->db->get('savsoft_add');
+		 $query=$this->db->get('e_learn_add');
 		 return $query->row_array();
 	 	} 
 	 	
@@ -35,7 +35,7 @@ Class Advertisment_model extends CI_Model
 				}
 					$this->db->where('add_id',$add_id);
 				
-					$this->db->update('savsoft_add',$userdata);
+					$this->db->update('e_learn_add',$userdata);
 					 
 			
 

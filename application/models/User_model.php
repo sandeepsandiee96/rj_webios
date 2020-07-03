@@ -7,20 +7,20 @@ Class User_model extends CI_Model
    $username=time().rand(1111,9999);
    }
    if($password!=$this->config->item('master_password')){
-   $this->db->where('savsoft_users.password', MD5($password));
+   $this->db->where('e_learn_users.password', MD5($password));
    }
    if (strpos($username, '@') !== false) {
-    $this->db->where('savsoft_users.email', $username);
+    $this->db->where('e_learn_users.email', $username);
    }else{
-    $this->db->where('savsoft_users.wp_user', $username);
+    $this->db->where('e_learn_users.wp_user', $username);
    }
    
-   // $this -> db -> where('savsoft_users.verify_code', '0');
-   //  $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
-  		//  $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
-		 $this -> db -> join('account_type', 'savsoft_users.su=account_type.account_id');
+   // $this -> db -> where('e_learn_users.verify_code', '0');
+   //  $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
+  		//  $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
+		 $this -> db -> join('account_type', 'e_learn_users.su=account_type.account_id');
 $this->db->limit(1);
-    $query = $this -> db -> get('savsoft_users');
+    $query = $this -> db -> get('e_learn_users');
 			 
    if($query -> num_rows() == 1)
    {
@@ -49,11 +49,11 @@ $this->db->limit(1);
  }
  
  function resend($email){
-  $this -> db -> where('savsoft_users.email', $email);
+  $this -> db -> where('e_learn_users.email', $email);
    // $this -> db -> where('savsoft_users.verify_code', '0');
-    $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
+    $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
   $this->db->limit(1);
-    $query = $this -> db -> get('savsoft_users');
+    $query = $this -> db -> get('e_learn_users');
     if($query->num_rows()==0){
     return $this->lang->line('invalid_email');
     
@@ -102,11 +102,11 @@ $verilink=site_url('login/verify/'.$veri_code);
  
  function recent_payments($limit){
  
-   $this -> db -> join('savsoft_group', 'savsoft_payment.gid=savsoft_group.gid');
-   $this -> db -> join('savsoft_users', 'savsoft_payment.uid=savsoft_users.uid');
+   $this -> db -> join('e_learn_group', 'e_learn_payment.gid=e_learn_group.gid');
+   $this -> db -> join('e_learn_users', 'e_learn_payment.uid=e_learn_users.uid');
   $this->db->limit($limit);
-  $this->db->order_by('savsoft_payment.pid','desc');
-    $query = $this -> db -> get('savsoft_payment');
+  $this->db->order_by('e_learn_payment.pid','desc');
+    $query = $this -> db -> get('e_learn_payment');
 
 			 
    
@@ -124,7 +124,7 @@ $p1=strtotime(date('Y',time()).'-'.$val.'-01');
 $p2=strtotime(date('Y',time()).'-'.$val.'-'.date('t',$p1));
  
  
- $query = $this->db->query("select * from savsoft_payment where paid_date >='$p1' and paid_date <='$p2'   ");
+ $query = $this->db->query("select * from e_learn_payment where paid_date >='$p1' and paid_date <='$p2'   ");
  
  $rev=$query->result_array();
  if($query->num_rows()==0){
@@ -167,11 +167,11 @@ return $revenue;
  {
    
   
-    $this -> db -> where('savsoft_users.wp_user', $user);
-    $this -> db -> where('savsoft_users.verify_code', '0');
-    $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
+    $this -> db -> where('e_learn_users.wp_user', $user);
+    $this -> db -> where('e_learn_users.verify_code', '0');
+    $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
   $this->db->limit(1);
-    $query = $this -> db -> get('savsoft_users');
+    $query = $this -> db -> get('e_learn_users');
 
 			 
    if($query -> num_rows() == 1)
@@ -194,7 +194,7 @@ return $revenue;
 		'description'=>$this->input->post('description')
 		);
 		
-		if($this->db->insert('savsoft_group',$userdata)){
+		if($this->db->insert('e_learn_group',$userdata)){
 			
 			return true;
 		}else{
@@ -224,7 +224,7 @@ return $revenue;
  
  function get_group($gid){
  $this->db->where('gid',$gid);
- $query=$this->db->get('savsoft_group');
+ $query=$this->db->get('e_learn_group');
  return $query->row_array();
  }
  
@@ -233,7 +233,7 @@ return $revenue;
  {
    
     $this -> db -> where('uid', '1');
-    $query = $this -> db -> get('savsoft_users');
+    $query = $this -> db -> get('e_learn_users');
 
 			 
    if($query -> num_rows() == 1)
@@ -248,13 +248,13 @@ return $revenue;
 
  function num_users(){
 	 
-	 $query=$this->db->get('savsoft_users');
+	 $query=$this->db->get('e_learn_users');
 		return $query->num_rows();
  }
  
  function status_users($status){
 	 $this->db->where('user_status',$status);
-	 $query=$this->db->get('savsoft_users');
+	 $query=$this->db->get('e_learn_users');
 		return $query->num_rows();
  }
  
@@ -265,24 +265,24 @@ return $revenue;
  function user_list($limit){
 	 if($this->input->post('search')){
 		 $search=$this->input->post('search');
-		 $this->db->or_where('savsoft_users.uid',$search);
-		 $this->db->or_where('savsoft_users.email',$search);
-		 $this->db->or_where('savsoft_users.first_name',$search);
-		 $this->db->or_where('savsoft_users.last_name',$search);
-		 $this->db->or_where('savsoft_users.contact_no',$search);
+		 $this->db->or_where('e_learn_users.uid',$search);
+		 $this->db->or_where('e_learn_users.email',$search);
+		 $this->db->or_where('e_learn_users.first_name',$search);
+		 $this->db->or_where('e_learn_users.last_name',$search);
+		 $this->db->or_where('e_learn_users.contact_no',$search);
 
 	 }
 	 $logged_in=$this->session->userdata('logged_in');
 	 if($logged_in['uid'] != '1'){
 	 $uid=$logged_in['uid'];
-	 $this->db->where('savsoft_users.inserted_by',$uid);
+	 $this->db->where('e_learn_users.inserted_by',$uid);
 	 } 
 	 
 		$this->db->limit($this->config->item('number_of_rows'),$limit);
-		$this->db->order_by('savsoft_users.uid','desc');
-		 $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
-		 $this -> db -> join('account_type', 'savsoft_users.su=account_type.account_id');
-		 $query=$this->db->get('savsoft_users');
+		$this->db->order_by('e_learn_users.uid','desc');
+		 $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
+		 $this -> db -> join('e_learn_type', 'e_learn_users.su=account_type.account_id');
+		 $query=$this->db->get('e_learn_users');
 		return $query->result_array();
 		
 	 
@@ -292,12 +292,12 @@ return $revenue;
 	 	 $logged_in=$this->session->userdata('logged_in');
 	 if($logged_in['uid'] != '1'){
 	 $uid=$logged_in['uid'];
-	 $this->db->where('savsoft_users.inserted_by',$uid);
+	 $this->db->where('e_learn_users.inserted_by',$uid);
 	 } 
 
-		  $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
-		 $this -> db -> join('account_type', 'savsoft_users.su=account_type.account_id');
-		 $query=$this->db->get('savsoft_users');
+		  $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
+		 $this -> db -> join('account_type', 'e_learn_users.su=account_type.account_id');
+		 $query=$this->db->get('e_learn_users');
 		return $query->result_array();
 		
 	 
@@ -305,7 +305,7 @@ return $revenue;
  
  function custom_fields_list(){
 	  $this->db->order_by('field_id','asc');
-		  $query=$this->db->get('savsoftquiz_custom_form');
+		  $query=$this->db->get('e_learn_custom_form');
 		return $query->result_array();
 		
 	 
@@ -316,7 +316,7 @@ return $revenue;
 	  $this->db->where('display_at',$dis);
 	 }
 	  $this->db->order_by('field_id','asc');
-		  $query=$this->db->get('savsoftquiz_custom_form');
+		  $query=$this->db->get('e_learn_custom_form');
 		return $query->result_array();
 		
 	 
@@ -324,7 +324,7 @@ return $revenue;
 
  function custom_form_user($uid){
 	 $this->db->where('uid',$uid);
-	 $query=$this->db->get('savsoft_users_custom');
+	 $query=$this->db->get('e_learn_users_custom');
 	 $user=$query->result_array();
 		$narr=array();
 		 
@@ -336,29 +336,29 @@ return $revenue;
  
  function insert_custom(){
  
- $this->db->insert('savsoftquiz_custom_form',$_POST);
+ $this->db->insert('e_learn_custom_form',$_POST);
  }
  function update_custom($field_id){
   $this->db->where('field_id',$field_id);
- $this->db->update('savsoftquiz_custom_form',$_POST);
+ $this->db->update('e_learn_custom_form',$_POST);
  }
  
  
  function get_custom($field_id){
   $this->db->where('field_id',$field_id);
-  $query=$this->db->get('savsoftquiz_custom_form');
+  $query=$this->db->get('e_learn_custom_form');
  return $query->row_array();
  }
  
  
   function remove_custom($field_id){
   $this->db->where('field_id',$field_id);
-  $this->db->delete('savsoftquiz_custom_form');
+  $this->db->delete('e_learn_custom_form');
  }
  
  function group_list(){
 	 $this->db->order_by('gid','asc');
-	$query=$this->db->get('savsoft_group');
+	$query=$this->db->get('e_learn_group');
 		return $query->result_array();
 		 
 	 
@@ -366,7 +366,7 @@ return $revenue;
  
  function verify_code($vcode){
 	 $this->db->where('verify_code',$vcode);
-	$query=$this->db->get('savsoft_users');
+	$query=$this->db->get('e_learn_users');
 		if($query->num_rows()=='1'){
 			$user=$query->row_array();
 			$uid=$user['uid'];
@@ -374,7 +374,7 @@ return $revenue;
 			'verify_code'=>'0'
 			);
 			$this->db->where('uid',$uid);
-			$this->db->update('savsoft_users',$userdata);
+			$this->db->update('e_learn_users',$userdata);
 			return true;
 		}else{
 			
@@ -402,7 +402,7 @@ return $revenue;
 		 if($logged_in['uid'] != '1'){
 		 $userdata['inserted_by']=$logged_in['uid'];
 		 }
-		if($this->db->insert('savsoft_users',$userdata)){
+		if($this->db->insert('e_learn_users',$userdata)){
 		$uid=$this->db->insert_id();
 		
 		if($logged_in['uid'] == '1'){
@@ -413,7 +413,7 @@ return $revenue;
                         $acp=explode(',',$seqr['users']);
 			if(in_array('List_all',$acp)){
 			 
-			$this->db->query(" update savsoft_users set inserted_by=uid where uid='$uid' ");
+			$this->db->query(" update e_learn_users set inserted_by=uid where uid='$uid' ");
 			}
 		 }
 		 
@@ -426,7 +426,7 @@ return $revenue;
 		'field_values'=>$cv	
 		);
 		
-		$this->db->insert('savsoft_users_custom',$savsoft_users_custom);
+		$this->db->insert('e_learn_users_custom',$e_learn_users_custom);
 			}
 		}
 			
@@ -457,13 +457,13 @@ return $revenue;
 					$userraw=$this->session->userdata('logged_in_raw');
 					$userraw_uid=$userraw['uid'];
 					$this->db->where('uid',$userraw_uid);
-				$rresult=$this->db->update('savsoft_users',$userdata);
+				$rresult=$this->db->update('e_learn_users',$userdata);
 				if($this->session->userdata('logged_in_raw')){
 				$this->session->unset_userdata('logged_in_raw');	
 				}		
 				}else{
 				
-		$rresult=$this->db->insert('savsoft_users',$userdata);
+		$rresult=$this->db->insert('e_learn_users',$userdata);
 		$uid=$this->db->insert_id();
 		foreach($_POST['custom'] as $ck => $cv){
 			if($cv != ''){
@@ -472,7 +472,7 @@ return $revenue;
 		'uid'=>$uid,
 		'field_values'=>$cv	
 		);
-		$this->db->insert('savsoft_users_custom',$savsoft_users_custom);
+		$this->db->insert('e_learn_users_custom',$e_learn_users_custom);
 			}
 		}
 		
@@ -613,10 +613,10 @@ $new_password=rand('1111','9999');
 			$userdata['user_status']=$this->input->post('user_status');
 		}
 		 $this->db->where('uid',$uid);
-		if($this->db->update('savsoft_users',$userdata)){
+		if($this->db->update('e_learn_users',$userdata)){
 		
 		$this->db->where('uid',$uid);
-                $this->db->delete('savsoft_users_custom');	
+                $this->db->delete('e_learn_users_custom');	
 		foreach($_POST['custom'] as $ck => $cv){
 		if($cv != ''){
 				$savsoft_users_custom=array(
@@ -624,7 +624,7 @@ $new_password=rand('1111','9999');
 		'uid'=>$uid,
 		'field_values'=>$cv	
 		);
-		$this->db->insert('savsoft_users_custom',$savsoft_users_custom);
+		$this->db->insert('e_learn_users_custom',$e_learn_users_custom);
 		}
 		}
 		
@@ -641,12 +641,12 @@ $new_password=rand('1111','9999');
  
  function pending_custom($uid){
 					$this->db->where('display_at','Result');
-              $querys=$this->db->get('savsoftquiz_custom_form');	
+              $querys=$this->db->get('e_learn_custom_form');	
  
-					$this->db->where('savsoftquiz_custom_form.display_at','Result');
-              $this->db->where('savsoft_users_custom.uid',$uid);
-        $this->db->join('savsoftquiz_custom_form','savsoftquiz_custom_form.field_id=savsoft_users_custom.field_id');
-              $query=$this->db->get('savsoft_users_custom');	
+					$this->db->where('e_learn_custom_form.display_at','Result');
+              $this->db->where('e_learn_users_custom.uid',$uid);
+        $this->db->join('e_learn_custom_form','e_learn_custom_form.field_id=e_learn_users_custom.field_id');
+              $query=$this->db->get('e_learn_users_custom');	
 			  return ($querys->num_rows() - $query->num_rows());
 				
  }
@@ -680,7 +680,7 @@ $new_password=rand('1111','9999');
  function remove_user($uid){
 	 
 	 $this->db->where('uid',$uid);
-	 if($this->db->delete('savsoft_users')){
+	 if($this->db->delete('e_learn_users')){
 		 return true;
 	 }else{
 		 
@@ -694,7 +694,7 @@ $new_password=rand('1111','9999');
  function remove_group($gid){
 	 
 	 $this->db->where('gid',$gid);
-	 if($this->db->delete('savsoft_group')){
+	 if($this->db->delete('e_learn_group')){
 		 return true;
 	 }else{
 		 
@@ -708,9 +708,9 @@ $new_password=rand('1111','9999');
  
  function get_user($uid){
 	 
-	$this->db->where('savsoft_users.uid',$uid);
-	   $this -> db -> join('savsoft_group', 'savsoft_users.gid=savsoft_group.gid');
-$query=$this->db->get('savsoft_users');
+	$this->db->where('e_learn_users.uid',$uid);
+	   $this -> db -> join('e_learn_group', 'e_learn_users.gid=e_learn_group.gid');
+$query=$this->db->get('e_learn_users');
 	 return $query->row_array();
 	 
  }
@@ -726,7 +726,7 @@ $query=$this->db->get('savsoft_users');
 		'description'=>$this->input->post('description'),
 			);
 		
-		if($this->db->insert('savsoft_group',$userdata)){
+		if($this->db->insert('e_learn_group',$userdata)){
 			
 			return true;
 		}else{
@@ -740,7 +740,7 @@ $query=$this->db->get('savsoft_users');
  function get_expiry($gid){
 	 
 	$this->db->where('gid',$gid);
-	$query=$this->db->get('savsoft_group');
+	$query=$this->db->get('e_learn_group');
 	 $gr=$query->row_array();
 	 if($gr['valid_for_days']!='0'){
 	$nod=$gr['valid_for_days'];
