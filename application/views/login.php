@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo $this->lang->line('savsoft_quiz');?></title>
+  <title><?php echo $this->lang->line('e_learn');?></title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url();?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,18 +33,18 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block  " style="background:url('https://savsoftquiz.com/sponserBanner.jpg');background-position: center;
+              <div class="col-lg-6 d-none d-lg-block  " style="background:url('http://rojeworld.com/');background-position: center;
     background-size: cover;"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
 				  <?php 
-				 $hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
+				 $hquery=$this->db->query(" select * from e_learn_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
 				$hres=$hquery->result_Array();
 				?>
                     <h1 class="h4 text-gray-900 mb-4">
 					
-					<?php if($hres[0]['setting_value']==""){ ?>Savsoft Quiz <sup>5.0</sup><?php }else{ echo $hres[0]['setting_value']; }?> 
+					<?php if($hres[0]['setting_value']==""){ ?>E_learn<?php }else{ echo $hres[0]['setting_value']; }?> 
 					
 					</h1>
                   </div>
@@ -97,7 +97,7 @@ if($this->config->item('open_quiz')){
                   <div class="text-center">
                     <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/pre_registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
                    
-				  <p style="margin-top:40px;""><a class="small" href="https://savsoftquiz.com" style="float:right;">Powered by Savsoft Quiz v5.0</a></p>
+				  <p style="margin-top:40px;""><a class="small" href="http://rojeworld.com/" style="float:right;">E_learn</a></p>
  
 				 </div>
                 </div>

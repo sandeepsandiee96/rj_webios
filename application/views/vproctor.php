@@ -9,7 +9,7 @@
  
 $quid= $quiz['quid'];
  $files = glob('proctor/'.$quid.'-'.$rid.'-*.png');  
-$query=$this->db->query(" select * from savsoft_result  join savsoft_users on savsoft_result.uid=savsoft_users.uid where savsoft_result.rid='$rid' ");
+$query=$this->db->query(" select * from e_learn_result  join e_learn_users on e_learn_result.uid=e_learn_users.uid where e_learn_result.rid='$rid' ");
 $user=$query->row_array();
 // Process through each file in the list
 // and output its extension
@@ -66,7 +66,7 @@ $efile=explode('-',$file);
 $rid=$efile[1];
  if(!in_array($rid,$inrid)){
  $inrid[]=$rid;
-$query=$this->db->query(" select * from savsoft_result  join savsoft_users on savsoft_result.uid=savsoft_users.uid where savsoft_result.rid='$rid' ");
+$query=$this->db->query(" select * from e_learn_result  join e_learn_users on e_learn_result.uid=e_learn_users.uid where e_learn_result.rid='$rid' ");
 $user=$query->row_array();
 ?>
 <div class="col-lg-2" style="text-align:center;">
