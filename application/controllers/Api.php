@@ -26,7 +26,7 @@ class Api extends CI_Controller {
 	}
 
 		public function get_group(){
-		$query=$this->db->query("select * from savsoft_group ");
+		$query=$this->db->query("select * from e_learn_group ");
 		$result=$query->result_array();
 		$groups=array();
 		foreach($result as $key => $val){
@@ -52,7 +52,7 @@ $groups[]=array('gid'=>$val['gid'],'group_name'=>$val['group_name'].' Price:'.$v
 		'password'=>md5('12345')
 		);
 		$this->db->where('uid','5');
-		$this->db->update('savsoft_users',$userdata);
+		$this->db->update('e_learn_users',$userdata);
 
 	}
 	
@@ -105,7 +105,7 @@ exit();
             'connection_key'=>$user['user']['connection_key'],
             );
             $this->db->where('uid',$uid);
-            $this->db->update('savsoft_users',$userdata);
+            $this->db->update('e_learn_users',$userdata);
            
             print_r(json_encode($user));
         }else{
@@ -123,8 +123,8 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$this->db->join('account_type','account_type.account_id=savsoft_users.su');
-			$auth=$this->db->get('savsoft_users');
+			$this->db->join('account_type','account_type.account_id=e_learn_users.su');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -141,8 +141,8 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			 $this->db->where('connection_key',$connection_key);
-			$this->db->join('account_type','account_type.account_id=savsoft_users.su');
-			$auth=$this->db->get('savsoft_users');
+			$this->db->join('account_type','account_type.account_id=e_learn_users.su');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -166,8 +166,8 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$this->db->join('account_type','account_type.account_id=savsoft_users.su');
-			$auth=$this->db->get('savsoft_users');
+			$this->db->join('account_type','account_type.account_id=e_learn_users.su');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -189,7 +189,7 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -213,7 +213,7 @@ exit();
 		 
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -227,7 +227,7 @@ exit();
 				 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$this->db->update('savsoft_users',$userdata);
+			$this->db->update('e_learn_users',$userdata);
 				exit("Information updated successfully");
 
 			}
@@ -239,8 +239,8 @@ exit();
 		 
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$this->db->join('account_type','account_type.account_id=savsoft_users.su');
-			$auth=$this->db->get('savsoft_users');
+			$this->db->join('account_type','account_type.account_id=e_learn_users.su');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -301,7 +301,7 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -351,7 +351,7 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -373,7 +373,7 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -399,7 +399,7 @@ exit();
 			
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->get('savsoft_users');
+			$auth=$this->db->get('e_learn_users');
 			$user=$auth->row_array();
 			if($auth->num_rows()==0){
 				exit('invalid Connection!');
@@ -463,7 +463,7 @@ function register($email,$first_name,$last_name,$password,$contact_no,$gid){
 			exit('Registration is closed by administrator');
 		}
 $email=urldecode($email);
-$query=$this->db->query("select * from savsoft_users where email='$email' ");
+$query=$this->db->query("select * from e_learn_users where email='$email' ");
 if($query->num_rows() >= 1){
 exit('Email address already exist');
 }
@@ -508,7 +508,7 @@ function forgot($user_email){
 			$userdata=array('connection_key'=>'');
 			$this->db->where('uid',$uid);
 			$this->db->where('connection_key',$connection_key);
-			$auth=$this->db->update('savsoft_users',$userdata);		
+			$auth=$this->db->update('e_learn_users',$userdata);		
   exit("Account logged out successfully!");
 		
 	}

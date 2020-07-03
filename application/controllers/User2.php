@@ -41,10 +41,10 @@ class User2 extends CI_Controller {
 			$data['uid']=$uid;
 	        $data['title']=$this->lang->line('profile');
 	        
-	        $query1=$this->db->query(" select * from savsoft_result where uid='$uid' order by rid desc ");
+	        $query1=$this->db->query(" select * from e_learn_result where uid='$uid' order by rid desc ");
 	        $res1=$query1->result_array();
-	        $query2=$this->db->query(" select * from savsoft_result where uid='$uid' and result_status='Pass' ");
-	        $query3=$this->db->query(" select * from savsoft_result where uid='$uid' and result_status='Fail' ");
+	        $query2=$this->db->query(" select * from e_learn_result where uid='$uid' and result_status='Pass' ");
+	        $query3=$this->db->query(" select * from e_learn_result where uid='$uid' and result_status='Fail' ");
 	        if($query1->num_rows()==0){
 	        $data['lastattempt']="Not attempted any quiz";
 	        }else{
@@ -123,9 +123,9 @@ class User2 extends CI_Controller {
 	         $incorrect_answers_new=0;
 	         }
 	       // getting questions
-	       $query4=$this->db->query(" select * from savsoft_qbank where qid in ($incorrect_answers_new) ");
+	       $query4=$this->db->query(" select * from e_learn_qbank where qid in ($incorrect_answers_new) ");
 	       $questions=$query4->result_array();
-	       $query5=$this->db->query(" select * from savsoft_options where qid in ($incorrect_answers_new) ");
+	       $query5=$this->db->query(" select * from e_learn_options where qid in ($incorrect_answers_new) ");
 	       $options=$query5->result_array();
 	          }
 	        $data['questions']=$questions;

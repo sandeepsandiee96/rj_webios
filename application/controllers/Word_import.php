@@ -19,7 +19,6 @@ class Word_import extends CI_Controller {
  {
 $logged_in=$this->session->userdata('logged_in');
 if($logged_in['su']!="1"){
-exit('Permission denied');
 return;
 }		
                 $config['upload_path']          = './upload/';
