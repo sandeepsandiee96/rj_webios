@@ -90,7 +90,7 @@ form{
 			if($this->session->userdata('logged_in')){
 				if(($this->uri->segment(1).'/'.$this->uri->segment(2))!='quiz/attempt'){
 				$logged_in=$this->session->userdata('logged_in');
-				$hquery=$this->db->query(" select * from savsoftquiz_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
+				$hquery=$this->db->query(" select * from e_learn_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
 				$hres=$hquery->result_Array();
 	?>
 	  <!-- Page Wrapper -->
@@ -99,9 +99,9 @@ form{
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://savsoftquiz.com">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://rojeworld.com/">
          
-        <div class="sidebar-brand-text mx-3"><?php if($hres[0]['setting_value']==""){ ?>Savsoft Quiz <sup>5.0</sup><?php }else{ echo $hres[0]['setting_value']; }?> </div>
+        <div class="sidebar-brand-text mx-3"><?php if($hres[0]['setting_value']==""){ ?>e_learn<?php }else{ echo $hres[0]['setting_value']; }?> </div>
 		
 		
       </a>
@@ -319,7 +319,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
         <div id="collapseSupport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           
-            <a class="collapse-item" href="https://savsoftquiz.com/support.php">Support</a>
+            <a class="collapse-item" href="http://rojeworld.com/">Support</a>
           </div>
         </div>
       </li>
@@ -382,12 +382,12 @@ $logged_in=$this->session->userdata('logged_in');
 	// check sg invitation
 	$uid=$logged_in['uid'];
 	$query=$this->db->query("select * from appointment_request 
-	join savsoft_users on savsoft_users.uid=appointment_request.request_by 
+	join e_learn on e_learn_users.uid=appointment_request.request_by 
 	 where appointment_request.to_id='$uid' and appointment_request.appointment_status='Pending' ");
 	$invitations=$query->result_array();
 	
- 	$query=$this->db->query("select * from savsoft_notification 
-	  where (savsoft_notification.uid='$uid' OR savsoft_notification.uid='0') AND (savsoft_notification.viewed='0')  ");
+ 	$query=$this->db->query("select * from e_learn_notification 
+	  where (e_learn_notification.uid='$uid' OR e_learn_notification.uid='0') AND (e_learn_notification.viewed='0')  ");
 	$notifications=$query->result_array();
 	
 	?>
@@ -504,7 +504,7 @@ if(in_array('List',explode(',',$logged_in['appointment'])) && !in_array('List_al
 if($this->uri->segment(2) != 'attempt' && $this->uri->segment(1) != 'install'){
 	$this->db->where("add_status","Active");
 	$this->db->where("position","Top");
-	$query=$this->db->get('savsoft_add');
+	$query=$this->db->get('e_learn_add');
 	if($query->num_rows()==1){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){

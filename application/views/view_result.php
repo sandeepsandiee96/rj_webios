@@ -755,7 +755,7 @@ $(window).on('load', function() {
 
 	$this->db->where("add_status","Active");
 	$this->db->where("position","Center_Result");
-	$query=$this->db->get('savsoft_add');
+	$query=$this->db->get('e_learn_add');
 	if($query->num_rows()==1){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){

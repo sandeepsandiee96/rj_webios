@@ -18,7 +18,7 @@ $colorcode=array(
 $logged_in=$this->session->userdata('logged_in');
 	 
 $uid=$logged_in['uid'];
-			$query=$this->db->query("select * from savsoft_users where uid='$uid' ");
+			$query=$this->db->query("select * from e_learn where uid='$uid' ");
 				$user=$query->row_array();
 				$asgid=explode(',',$user['gid']);
 			
