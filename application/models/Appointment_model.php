@@ -19,8 +19,8 @@ Class Appointment_model extends CI_Model
 		select A.*, B.first_name as requested_by_name, B.skype_id as requested_by_skype
 		, C.first_name as appointed_to_name, C.skype_id as appointed_to_skype
 		 from appointment_request as A
-		JOIN savsoft_users as B on B.uid=A.request_by
-		JOIN savsoft_users as C on C.uid=A.to_id
+		JOIN e_learn_users as B on B.uid=A.request_by
+		JOIN e_learn_users as C on C.uid=A.to_id
 		 order by A.appointment_timing DESC
 		limit $limit,$nor
 		");
@@ -40,7 +40,7 @@ Class Appointment_model extends CI_Model
  function get_user($uid){
  
  $this->db->where('uid',$uid);
- $query=$this->db->get('savsoft_users');
+ $query=$this->db->get('e_learn_users');
  return $query->row_array();
  }
  

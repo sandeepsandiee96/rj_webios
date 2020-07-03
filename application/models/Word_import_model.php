@@ -115,7 +115,7 @@ $corect_position=array(
 	$insert_data['description1']=$singlequestion['description1'];
 	}
 	
-	if($this->db->insert('savsoft_qbank',$insert_data)){
+	if($this->db->insert('e_learn_qbank',$insert_data)){
 		$qid=$this->db->insert_id();
 		$optionkeycounter = 4;
 		if($ques_type=="0" || $ques_type=="1"){
@@ -145,7 +145,7 @@ $correctoption = 0;
 					if(isset($singlequestion['option1'])){
 $insert_options['q_option1']=$singlequestion['option1'][$corect_key];
 }
-				$this->db->insert("savsoft_options",$insert_options);
+				$this->db->insert("e_learn_options",$insert_options);
 				
 				
 			

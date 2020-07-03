@@ -6,17 +6,17 @@ Class Assignment_model extends CI_Model
    if($this->input->post('search')){
   // print_r($_POST);die;
 		 $search=$this->input->post('search');
-		 $this->db->where('savsoft_assignment.assignment_id',$search);
-		 $this->db->or_where('savsoft_assignment.assignment_title',$search);
+		 $this->db->where('e_learn_assignment.assignment_id',$search);
+		 $this->db->or_where('e_learn_assignment.assignment_title',$search);
 		        
 
 	 }
 	  $logged_in=$this->session->userdata('logged_in');
 		
 	  $this->db->limit($this->config->item('number_of_rows'),$limit);
-		$this->db->order_by('savsoft_assignment.assignment_id','desc');
-		$this->db->join('savsoft_category', 'savsoft_category.cid = savsoft_assignment.cid', 'left'); 
-		$query=$this->db->get('savsoft_assignment');
+		$this->db->order_by('e_learn_assignment.assignment_id','desc');
+		$this->db->join('e_learn_category', 'e_learn_category.cid = e_learn_assignment.cid', 'left'); 
+		$query=$this->db->get('e_learn_assignment');
 		return $query->result_array();
 		
 	 
@@ -26,12 +26,12 @@ Class Assignment_model extends CI_Model
  
  function getcategory_list(){
 		// $this->db->where('add_id',$add_id);
-		 $query=$this->db->get('savsoft_category');
+		 $query=$this->db->get('e_learn_category');
 		 return $query->result_array();
 	 	} 
 	 function getgroup_list(){
 		
-		 $query=$this->db->get('savsoft_group');
+		 $query=$this->db->get('e_learn_group');
 		 return $query->result_array();
 	 	}  	
 	
@@ -101,7 +101,7 @@ $nfilename="";
 	 $this->db->where('user_assignment_reports.uid',$logged_in['uid']);		
 			}
 	 $this->db->where('user_assignment_reports.assignment_id',$assignment_id);
-	 $this->db->join('savsoft_users','savsoft_users.uid=user_assignment_reports.uid');
+	 $this->db->join('e_learn_users','e_learn_users.uid=user_assignment_reports.uid');
 	 $query=$this->db->get("user_assignment_reports");
 	 return $query->result_array();
 	 
@@ -146,7 +146,7 @@ $nfilename="";
 		);
 		 
 	
-	if($this->db->insert('savsoft_assignment',$userdata)){
+	if($this->db->insert('e_learn_assignment',$userdata)){
 	
 	return true;
 	}else{
@@ -157,16 +157,16 @@ $nfilename="";
 	 	
 	 	
 	 function getassignment_view($assignment_id){
-	 $this->db->where('savsoft_assignment.assignment_id',$assignment_id);
-	 $this->db->join('savsoft_category', 'savsoft_category.cid = savsoft_assignment.cid'); 
-		$query=$this->db->get('savsoft_assignment');
+	 $this->db->where('e_learn_assignment.assignment_id',$assignment_id);
+	 $this->db->join('e_learn_category', 'e_learn_category.cid = e_learn_assignment.cid'); 
+		$query=$this->db->get('e_learn_assignment');
 		return $query->row_array();
 	 
 	 }	
 	 
 	 function remove_assignment($assignment_id){
-	 $this->db->where('savsoft_assignment.assignment_id',$assignment_id);
-	 if($this->db->delete('savsoft_assignment')){
+	 $this->db->where('e_learn_assignment.assignment_id',$assignment_id);
+	 if($this->db->delete('e_learn_assignment')){
 	
 	return true;
 	}else{
@@ -181,7 +181,7 @@ $nfilename="";
 	
 	
 	 $this->db->where('assignment_id',$assignment_id);
-		 $query=$this->db->get('savsoft_assignment');
+		 $query=$this->db->get('e_learn_assignment');
 		 return $query->row_array();
 	
 	} 	
@@ -221,7 +221,7 @@ $nfilename="";
 		);
 		 
 	 $this->db->where('assignment_id',$assignment_id);
-	if($this->db->update('savsoft_assignment',$userdata)){
+	if($this->db->update('e_learn_assignment',$userdata)){
 	
 	return true;
 	}else{

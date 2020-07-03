@@ -15,7 +15,7 @@ Class Studymaterial_model extends CI_Model
 		
 	  $this->db->limit($this->config->item('number_of_rows'),$limit);
 		$this->db->order_by('study_material.stid','desc');
-		$this->db->join('savsoft_category', 'savsoft_category.cid = study_material.cid', 'left'); 
+		$this->db->join('e_learn_category', 'e_learn_category.cid = study_material.cid', 'left'); 
 		$query=$this->db->get('study_material');
 		return $query->result_array();
 		
@@ -26,12 +26,12 @@ Class Studymaterial_model extends CI_Model
  
  function getcategory_list(){
 		// $this->db->where('add_id',$add_id);
-		 $query=$this->db->get('savsoft_category');
+		 $query=$this->db->get('e_learn_category');
 		 return $query->result_array();
 	 	} 
 	 function getgroup_list(){
 		
-		 $query=$this->db->get('savsoft_group');
+		 $query=$this->db->get('e_learn_group');
 		 return $query->result_array();
 	 	}  	
 	
@@ -86,7 +86,7 @@ $nfilename="";
 	 	
 	 function getstudymaterial_view($stid){
 	 $this->db->where('study_material.stid',$stid);
-	 $this->db->join('savsoft_category', 'savsoft_category.cid = study_material.cid'); 
+	 $this->db->join('e_learn_category', 'e_learn_category.cid = study_material.cid'); 
 		$query=$this->db->get('study_material');
 		return $query->row_array();
 	 

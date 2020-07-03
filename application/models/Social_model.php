@@ -28,7 +28,7 @@ Class Social_model extends CI_Model
  function group_member($sg_id){
  
  $this->db->where('sg_id',$sg_id);
- $this->db->join('savsoft_users','savsoft_users.uid=social_group_joined.uid');
+ $this->db->join('e_learn_users','e_learn_users.uid=social_group_joined.uid');
  $query=$this->db->get('social_group_joined');
  return $query->result_array();
  }
@@ -105,7 +105,7 @@ if($query->num_rows()==0){
  $this->db->query(" update social_group set no_member=(no_member + 1) where sg_id='$sg_id' ");
  
   $this->db->where('uid',$uid);
- $query=$this->db->get('savsoft_users');
+ $query=$this->db->get('e_learn_users');
 $user=$query->row_array();
  $feed=$user['first_name'].' '.$user['last_name'].' '.$this->lang->line('sg_join_feed');
   $userdata=array(
@@ -125,7 +125,7 @@ $user=$query->row_array();
  $this->db->delete('social_group_joined');
  $this->db->query(" update social_group set no_member=(no_member - 1) where sg_id='$sg_id' ");
    $this->db->where('uid',$uid);
- $query=$this->db->get('savsoft_users');
+ $query=$this->db->get('e_learn_users');
 $user=$query->row_array();
  $feed=$user['first_name'].' '.$user['last_name'].' '.$this->lang->line('sg_unjoin_feed');
   $userdata=array(
