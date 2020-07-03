@@ -62,7 +62,7 @@ class Install extends CI_Controller {
 				printf("Connect failed: %s\n", mysqli_connect_error());
 				exit();
 			}
-			$query=file_get_contents("savsoftquiz_v5_0.sql");
+			$query=file_get_contents("e_learnquiz_v5_0.sql");
 			if (mysqli_multi_query($link, $query)) {
 				$burl="<a href='".$this->input->post('sq_base_url')."'>".$this->input->post('sq_base_url')."</a>";
 			$data['result']=str_replace("ADMINEMAIL",$adminemail,str_replace("ADMINPASS",$adminpassword,str_replace("{base_url}",$burl,$this->lang->line('installation_completed'))));
@@ -73,7 +73,7 @@ class Install extends CI_Controller {
 			$data['result']=$this->lang->line('installation_failed');			
 			}
 			$this->load->database();
-			$pq=" update savsoft_users set email='$adminemail', password='$mpass' where uid='1' ";
+			$pq=" update e_learn_users set email='$adminemail', password='$mpass' where uid='1' ";
 			
 			$this->db->query($pq);
 			$data['title']="";
@@ -91,7 +91,7 @@ class Install extends CI_Controller {
 		rename("./application/controllers/Install.php","./application/controllers/".time()."Install.php");
 		
 		 /*
-		$sq_base_url='http://localhost/savsoftquiz_v3.0/';
+		$sq_base_url='http://localhost/e_learnquiz_v3.0/';
 		$sq_hostname='localhost';
 		$sq_dbname='';
 		$sq_dbusername='root';

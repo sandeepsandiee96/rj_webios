@@ -71,7 +71,7 @@ class Result extends CI_Controller {
 			} 
 		
 	if($open != 0){
-	$this->db->query("delete from savsoft_result where result_status='Open'");
+	$this->db->query("delete from e_learn_result where result_status='Open'");
 	}
 	
 		$logged_in=$this->session->userdata('logged_in');
@@ -226,11 +226,11 @@ class Result extends CI_Controller {
 	 foreach($data['members'] as $k => $user){
 	 $uids[]=$user['uid'];
 	 }
-	 $this->db->order_by('savsoft_result.score_obtained','desc');
-	 $this->db->where('savsoft_result.quid',$quid);
-	 $this->db->where_in('savsoft_result.uid',$uids);
-	$this->db->join('savsoft_users','savsoft_users.uid=savsoft_result.uid');
-	 $query=$this->db->get("savsoft_result");
+	 $this->db->order_by('e_learn_result.score_obtained','desc');
+	 $this->db->where('e_learn_result.quid',$quid);
+	 $this->db->where_in('e_learn_result.uid',$uids);
+	$this->db->join('e_learn_users','e_learn_users.uid=e_learn_result.uid');
+	 $query=$this->db->get("e_learn_result");
 	$data['quiz']=$query->result_array();  
 	 
 	$this->load->view('getscoresbysg',$data);

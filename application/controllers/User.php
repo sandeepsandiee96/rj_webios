@@ -74,7 +74,7 @@ class User extends CI_Controller {
 			exit($this->lang->line('permission_denied'));
 			}
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[savsoft_users.email]');
+		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[e_learn_users.email]');
         $this->form_validation->set_rules('password', 'Password', 'required');
           if ($this->form_validation->run() == FALSE)
                 {
@@ -124,15 +124,15 @@ class User extends CI_Controller {
 		if($cv != ''){
 					$this->db->where('uid',$uid);
                 	$this->db->where('field_id',$ck);
-                $this->db->delete('savsoft_users_custom');	
+                $this->db->delete('e_learn_users_custom');	
 				
 				
-				$savsoft_users_custom=array(
+                $e_learn_users_custom=array(
 		'field_id'=>$ck,
 		'uid'=>$uid,
 		'field_values'=>$cv	
 		);
-		$this->db->insert('savsoft_users_custom',$savsoft_users_custom);
+                $this->db->insert('e_learn_users_custom',$e_learn_users_custom);
 		}
 		}
 		redirect('result/view_result/'.$rid);
@@ -322,7 +322,7 @@ class User extends CI_Controller {
 			);
 			
 			$this->db->where('uid',$uid);
-			$this->db->update('savsoft_users',$userdata);
+			$this->db->update('e_learn_users',$userdata);
 			 $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('group_updated_successfully')." </div>");
 			}else{
 			 $this->session->set_flashdata('message', "<div class='alert alert-success'>You already subscribed this group! </div>");
@@ -421,7 +421,7 @@ class User extends CI_Controller {
 			}
 			
                         $mgid=$this->input->post('mgid');
-                        $this->db->query(" update savsoft_users set gid='$mgid' where gid='$gid' ");
+                        $this->db->query(" update e_learn_users set gid='$mgid' where gid='$gid' ");
                         
 
 			

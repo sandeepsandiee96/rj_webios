@@ -151,7 +151,7 @@ class Login extends CI_Controller {
 			$user=$status['user'];
 			$gids=$user['gid'];
 			$uid=$user['uid'];
-			 $sl="select * from savsoft_group where gid in ($gids) ";
+			 $sl="select * from e_learn_group where gid in ($gids) ";
 			$rq=$this->db->query($sl);
 			 
 			$gr=$rq->result_array();
@@ -161,7 +161,7 @@ class Login extends CI_Controller {
 				
 			foreach($gr as $pk => $pv){
 				$gid=$pv['gid'];
-				$sl2="select * from savsoft_payment where uid='$uid' and gid='$gid' and payment_status='Paid' ";
+				$sl2="select * from e_learn_payment where uid='$uid' and gid='$gid' and payment_status='Paid' ";
 				 
 				$sl3=$this->db->query($sl2);
 				// echo $sl3->num_rows(); echo "<br>";
@@ -294,7 +294,7 @@ class Login extends CI_Controller {
 		
 		 $this->load->helper('url');
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[savsoft_users.email]');
+		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[e_learn_users.email]');
         $this->form_validation->set_rules('password', 'Password', 'required');
           if ($this->form_validation->run() == FALSE)
                 {
@@ -363,9 +363,9 @@ class Login extends CI_Controller {
                       $status = false;
                     } else {
                     
-                    // if username already exist in savsoft_users
+                        // if username already exist in e_learn_users
                     $this->db->where('wp_user',$user);
-                    $query=$this->db->get('savsoft_users');
+                    $query=$this->db->get('e_learn_users');
                     if($query->num_rows()==0){
                     $userdata=array(
                     'password'=>md5($pass),
@@ -374,7 +374,7 @@ class Login extends CI_Controller {
                     'gid'=>$this->config->item('default_group')                  
                     
                     );
-                    $this->db->insert('savsoft_users',$userdata);
+                    $this->db->insert('e_learn_users',$userdata);
                     
                     }
                     
