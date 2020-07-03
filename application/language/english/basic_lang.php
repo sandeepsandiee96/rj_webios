@@ -1,7 +1,7 @@
 <?php 
-$lang['savsoft_quiz'] = "Savsoft Quiz v5.0";
+$lang['e_learn_quiz'] = "e_learn_quiz Quiz v5.0";
 $lang['installation_process'] = "Installation Process";
-$lang['installation_completed'] = "Installation Completed. Visit base URL {base_url} to login.<br><br>Default login info:<br> Email: ADMINEMAIL <br>Password: ADMINPASS<br><br>For more information or customization visit <a href='http://savsoftquiz.com/'>www.SavsoftQuiz.com/</a> ";
+$lang['installation_completed'] = "Installation Completed. Visit base URL {base_url} to login.<br><br>Default login info:<br> Email: ADMINEMAIL <br>Password: ADMINPASS<br><br>For more information or customization visit <a href='http://rojeworld.com/'>www.Rojeworld.com/</a> ";
 $lang['installation_failed'] = "Installation Failed";
 $lang['hostname'] = "Database Host Name";
 $lang['db_name'] = "Database Name";
@@ -319,7 +319,7 @@ $lang['past_days']="from last month";
  $lang['add_group'] = "Add Group";
 $lang['edit_group'] = "Edit Group";
 $lang['change_group'] = "Change Group/Subscription";
-$lang['commercial_msg'] = "You are using free version of Savsoft Quiz. <a href='http://savsoftquiz.com' target='sq'>Upgrade</a> to enterprise version to get more features. ";
+$lang['commercial_msg'] = "You are using free version of e_learn Quiz. <a href='http://rojeworld.com/' target='sq'>Upgrade</a> to enterprise version to get more features. ";
 $lang['files_missing'] = "Invalid Path";
 $lang['files_missing2'] = "Please check the url you are trying to visit.";
 $lang['notification'] = "Notification";
