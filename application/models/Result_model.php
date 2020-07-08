@@ -146,7 +146,11 @@ $res=array();
 	$this->db->select("e_learn_result.uid");
 	$this->db->where("e_learn_result.quid",$quid);
 	 $this->db->group_by("e_learn_result.uid");
+<<<<<<< HEAD
 	// $this->db->order_by("e_learn_result.score_obtained",'DESC');
+=======
+	// $this->db->order_by("savsoft_result.score_obtained",'DESC');
+>>>>>>> bd4ec71fe78f8f381b27d90f4dd83963a0d77392
 	$query = $this -> db -> get('e_learn_result');
 	$res[0]=$query -> num_rows();
 

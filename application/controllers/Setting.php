@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Setting extends CI_Controller {
 
 /*
-| Savsoft Quiz - https://savsoftquiz.com 
+| e_learn Quiz - https://e_learnquiz.com 
 |  Setting page
 */
 

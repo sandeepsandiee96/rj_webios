@@ -89,7 +89,7 @@ function remove_account($account_id){
 			exit($this->lang->line('permission_denied'));
 			}
 			$maid=$this->input->post('maid');
-$this->db->query(" update savsoft_users set su='$maid' where su='$account_id' ");
+$this->db->query(" update e_learn_users set su='$maid' where su='$account_id' ");
 			if($this->Account_model->remove_account($account_id)){
                         $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('removed_successfully')." </div>");
 					}else{

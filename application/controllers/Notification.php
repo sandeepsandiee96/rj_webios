@@ -32,7 +32,7 @@ class Notification extends CI_Controller {
 		
 		 	 
 		$uid=$logged_in['uid'];
-$this->db->query("update savsoft_notification set viewed='1' where uid='$uid' ");		
+$this->db->query("update e_learn_notification set viewed='1' where uid='$uid' ");		
 			
 	        $data['limit']=$limit;
 		$data['title']=$this->lang->line('notification');
@@ -56,7 +56,7 @@ $this->db->query("update savsoft_notification set viewed='1' where uid='$uid' ")
 	 );
 	 }
 	$this->db->where('uid',$uid);
-	$this->db->update('savsoft_users',$userdata);
+	$this->db->update('e_learn_users',$userdata);
 	
 	}
 	
