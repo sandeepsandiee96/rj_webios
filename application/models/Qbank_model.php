@@ -6,26 +6,26 @@ Class Qbank_model extends CI_Model
 	$logged_in=$this->session->userdata('logged_in');
 	 if($this->input->post('search')){
 		 $search=$this->input->post('search');
-		 $this->db->or_where('savsoft_qbank.qid',$search);
-		 $this->db->or_like('savsoft_qbank.question',$search);
-		 $this->db->or_like('savsoft_qbank.description',$search);
+		 $this->db->or_where('e_learn_qbank.qid',$search);
+		 $this->db->or_like('e_learn_qbank.question',$search);
+		 $this->db->or_like('e_learn_qbank.description',$search);
 
 	 }
 	 if($cid!='0'){
-		  $this->db->where('savsoft_qbank.cid',$cid);
+		  $this->db->where('e_learn_qbank.cid',$cid);
 	 }
 	 if($lid!='0'){
-		  $this->db->where('savsoft_qbank.lid',$lid);
+		  $this->db->where('e_learn_qbank.lid',$lid);
 	 }
 	 if($logged_in['uid'] != '1'){
 	 $uid=$logged_in['uid'];
-	 $this->db->where('savsoft_qbank.inserted_by',$uid);
+	 $this->db->where('e_learn_qbank.inserted_by',$uid);
 	 }
-		 $this->db->join('savsoft_category','savsoft_category.cid=savsoft_qbank.cid');
-	 $this->db->join('savsoft_level','savsoft_level.lid=savsoft_qbank.lid');
+		 $this->db->join('e_learn_category','e_learn_category.cid=e_learn_qbank.cid');
+	 $this->db->join('e_learn_level','e_learn_level.lid=e_learn_qbank.lid');
 	 $this->db->limit($this->config->item('number_of_rows'),$limit);
-		$this->db->order_by('savsoft_qbank.qid','desc');
-		$query=$this->db->get('savsoft_qbank');
+		$this->db->order_by('e_learn_qbank.qid','desc');
+		$query=$this->db->get('e_learn_qbank');
 		return $query->result_array();
 		
 	 
@@ -37,9 +37,9 @@ Class Qbank_model extends CI_Model
 	
 		 if($logged_in['uid'] != '1'){
 	 $uid=$logged_in['uid'];
-	 $this->db->where('savsoft_qbank.inserted_by',$uid);
+	 $this->db->where('e_learn_qbank.inserted_by',$uid);
 	 } 
-	 $query=$this->db->get('savsoft_qbank');
+	 $query=$this->db->get('e_learn_qbank');
 		return $query->num_rows();
  }
  
@@ -47,14 +47,14 @@ Class Qbank_model extends CI_Model
  
  function get_question($qid){
 	 $this->db->where('qid',$qid);
-	 $query=$this->db->get('savsoft_qbank');
+	 $query=$this->db->get('e_learn_qbank');
 	 return $query->row_array();
 	 
 	 
  }
  function get_option($qid){
 	 $this->db->where('qid',$qid);
-	 $query=$this->db->get('savsoft_options');
+	 $query=$this->db->get('e_learn_options');
 	 return $query->result_array();
 	 
 	 
@@ -63,12 +63,12 @@ Class Qbank_model extends CI_Model
  function remove_question($qid){
 	 
 	 $this->db->where('qid',$qid);
-	 if($this->db->delete('savsoft_qbank')){
+	 if($this->db->delete('e_learn_qbank')){
 		  $this->db->where('qid',$qid);
-			$this->db->delete('savsoft_options');
+			$this->db->delete('e_learn_options');
 			
 						
-	$qr=$this->db->query("select * from savsoft_quiz where FIND_IN_SET($qid, qids) ");
+	$qr=$this->db->query("select * from e_learn_quiz where FIND_IN_SET($qid, qids) ");
 	 
 			foreach($qr->result_array() as $k =>$val){
 			
@@ -82,7 +82,7 @@ Class Qbank_model extends CI_Model
 			}
 			$noq=count($nqids);
 			$nqids=implode(',',$nqids);
-			$this->db->query(" update savsoft_quiz set qids='$nqids', noq='$noq' where quid='$quid' ");
+			$this->db->query(" update e_learn_quiz set qids='$nqids', noq='$noq' where quid='$quid' ");
 			}
 			
 			
@@ -124,7 +124,7 @@ Class Qbank_model extends CI_Model
 		  }		  
 	  }
 	  
-	 $this->db->insert('savsoft_qbank',$userdata);
+	 $this->db->insert('e_learn_qbank',$userdata);
 	 $qid=$this->db->insert_id();
 	 $this->session->set_flashdata('qid',$qid);
 	 foreach($this->input->post('option') as $key => $val){
@@ -152,7 +152,7 @@ Class Qbank_model extends CI_Model
 	  }
 	  
 	  
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -177,7 +177,7 @@ Class Qbank_model extends CI_Model
 	  $userdata['inserted_by']=$uid;
 	  $userdata['inserted_by_name']=$fname;
 	  
-	 $this->db->insert('savsoft_qbank',$userdata);
+	 $this->db->insert('e_learn_qbank',$userdata);
 	 $qid=$this->db->insert_id();
 	 $this->session->set_flashdata('qid',$qid);
 	 foreach($this->input->post('option') as $key => $val){
@@ -191,7 +191,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -216,7 +216,7 @@ Class Qbank_model extends CI_Model
 	  $fname=$logged_in['first_name'].' '.$logged_in['last_name'];
 	  $userdata['inserted_by']=$uid;
 	  $userdata['inserted_by_name']=$fname;
-	 $this->db->insert('savsoft_qbank',$userdata);
+	 $this->db->insert('e_learn_qbank',$userdata);
 	 $qid=$this->db->insert_id();
 	 $this->session->set_flashdata('qid',$qid);
 	 foreach($this->input->post('option') as $key => $val){
@@ -227,7 +227,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -254,7 +254,7 @@ Class Qbank_model extends CI_Model
 	  $fname=$logged_in['first_name'].' '.$logged_in['last_name'];
 	  $userdata['inserted_by']=$uid;
 	  $userdata['inserted_by_name']=$fname;
-	 $this->db->insert('savsoft_qbank',$userdata);
+	 $this->db->insert('e_learn_qbank',$userdata);
 	 $qid=$this->db->insert_id();
 	 $this->session->set_flashdata('qid',$qid);
 	 foreach($this->input->post('option') as $key => $val){
@@ -264,7 +264,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -289,7 +289,7 @@ Class Qbank_model extends CI_Model
 	  $fname=$logged_in['first_name'].' '.$logged_in['last_name'];
 	  $userdata['inserted_by']=$uid;
 	  $userdata['inserted_by_name']=$fname;
-	 $this->db->insert('savsoft_qbank',$userdata);
+	 $this->db->insert('e_learn_qbank',$userdata);
 	 $qid=$this->db->insert_id();
 	 $this->session->set_flashdata('qid',$qid);
 	 
@@ -321,9 +321,9 @@ Class Qbank_model extends CI_Model
 		  }		  
 	  }
 	 $this->db->where('qid',$qid);
-	 $this->db->update('savsoft_qbank',$userdata);
+	 $this->db->update('e_learn_qbank',$userdata);
 	 $this->db->where('qid',$qid);
-	$this->db->delete('savsoft_options');
+	$this->db->delete('e_learn_options');
 	 foreach($this->input->post('option') as $key => $val){
 		 
 		 
@@ -349,7 +349,7 @@ Class Qbank_model extends CI_Model
 			}	 
 		  }		  
 	  }
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -373,9 +373,9 @@ Class Qbank_model extends CI_Model
 	 'lid'=>$this->input->post('lid')	 
 	 );
 	 $this->db->where('qid',$qid);
-	 $this->db->update('savsoft_qbank',$userdata);
+	 $this->db->update('e_learn_qbank',$userdata);
 	 $this->db->where('qid',$qid);
-	$this->db->delete('savsoft_options');
+	$this->db->delete('e_learn_options');
 	 foreach($this->input->post('option') as $key => $val){
 		 if(in_array($key,$this->input->post('score'))){
 			 $score=(1/count($this->input->post('score')));
@@ -387,7 +387,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -408,9 +408,9 @@ Class Qbank_model extends CI_Model
 	 'lid'=>$this->input->post('lid')	 
 	 );
 	 	 $this->db->where('qid',$qid);
-	 $this->db->update('savsoft_qbank',$userdata);
+	 $this->db->update('e_learn_qbank',$userdata);
 	 $this->db->where('qid',$qid);
-	$this->db->delete('savsoft_options');
+	$this->db->delete('e_learn_options');
 	foreach($this->input->post('option') as $key => $val){
 	  $score=(1/count($this->input->post('option')));
 	$userdata=array(
@@ -419,7 +419,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -442,9 +442,9 @@ Class Qbank_model extends CI_Model
 	 'lid'=>$this->input->post('lid')	 
 	 );
 		 $this->db->where('qid',$qid);
-	 $this->db->update('savsoft_qbank',$userdata);
+	 $this->db->update('e_learn_qbank',$userdata);
 	 $this->db->where('qid',$qid);
-	$this->db->delete('savsoft_options');
+	$this->db->delete('e_learn_options');
  foreach($this->input->post('option') as $key => $val){
 	  $score=1;
 	$userdata=array(
@@ -452,7 +452,7 @@ Class Qbank_model extends CI_Model
 	 'qid'=>$qid,
 	 'score'=>$score,
 	 );
-	 $this->db->insert('savsoft_options',$userdata);	 
+	 $this->db->insert('e_learn_options',$userdata);	 
 		 
 	 }
 	 
@@ -473,9 +473,9 @@ Class Qbank_model extends CI_Model
 	 'lid'=>$this->input->post('lid')	 
 	 );
 		 $this->db->where('qid',$qid);
-	 $this->db->update('savsoft_qbank',$userdata);
+	 $this->db->update('e_learn_qbank',$userdata);
 	 $this->db->where('qid',$qid);
-	$this->db->delete('savsoft_options');
+	$this->db->delete('e_learn_options');
 
 	 
 	 return true;
@@ -488,7 +488,7 @@ Class Qbank_model extends CI_Model
  // category function start
  function category_list(){
 	 $this->db->order_by('cid','desc');
-	 $query=$this->db->get('savsoft_category');
+	 $query=$this->db->get('e_learn_category');
 	 return $query->result_array();
 	 
  }
@@ -504,7 +504,7 @@ Class Qbank_model extends CI_Model
 		);
 	 
 		 $this->db->where('cid',$cid);
-		if($this->db->update('savsoft_category',$userdata)){
+		if($this->db->update('e_learn_category',$userdata)){
 			
 			return true;
 		}else{
@@ -519,7 +519,7 @@ Class Qbank_model extends CI_Model
  function remove_category($cid){
 	 
 	 $this->db->where('cid',$cid);
-	 if($this->db->delete('savsoft_category')){
+	 if($this->db->delete('e_learn_category')){
 		 return true;
 	 }else{
 		 
@@ -537,7 +537,7 @@ Class Qbank_model extends CI_Model
 		'category_name'=>$this->input->post('category_name'),
 			);
 		
-		if($this->db->insert('savsoft_category',$userdata)){
+		if($this->db->insert('e_learn_category',$userdata)){
 			
 			return true;
 		}else{
@@ -556,7 +556,7 @@ Class Qbank_model extends CI_Model
  
 // level function start
  function level_list(){
-	  $query=$this->db->get('savsoft_level');
+	  $query=$this->db->get('e_learn_level');
 	 return $query->result_array();
 	 
  }
@@ -572,7 +572,7 @@ Class Qbank_model extends CI_Model
 		);
 	 
 		 $this->db->where('lid',$lid);
-		if($this->db->update('savsoft_level',$userdata)){
+		if($this->db->update('e_learn_level',$userdata)){
 			
 			return true;
 		}else{
@@ -587,7 +587,7 @@ Class Qbank_model extends CI_Model
  function remove_level($lid){
 	 
 	 $this->db->where('lid',$lid);
-	 if($this->db->delete('savsoft_level')){
+	 if($this->db->delete('e_learn_level')){
 		 return true;
 	 }else{
 		 
@@ -605,7 +605,7 @@ Class Qbank_model extends CI_Model
 		'level_name'=>$this->input->post('level_name'),
 			);
 		
-		if($this->db->insert('savsoft_level',$userdata)){
+		if($this->db->insert('e_learn_level',$userdata)){
 			
 			return true;
 		}else{
@@ -637,15 +637,15 @@ if($key != 0){
 // echo "<pre>";print_r($singlequestion); exit;
 $question= str_replace('"','&#34;',$singlequestion['1']);
 $question= str_replace("`",'&#39;',$question);
-$question= str_replace("‘",'&#39;',$question);
-$question= str_replace("’",'&#39;',$question);
-$question= str_replace("â€œ",'&#34;',$question);
 $question= str_replace("â€˜",'&#39;',$question);
-
-
-
 $question= str_replace("â€™",'&#39;',$question);
-$question= str_replace("â€",'&#34;',$question);
+$question= str_replace("Ã¢â‚¬Å“",'&#34;',$question);
+$question= str_replace("Ã¢â‚¬Ëœ",'&#39;',$question);
+
+
+
+$question= str_replace("Ã¢â‚¬â„¢",'&#39;',$question);
+$question= str_replace("Ã¢â‚¬Â�",'&#34;',$question);
 $question= str_replace("'","&#39;",$question);
 $question= str_replace("\n","<br>",$question);
 $description= str_replace('"','&#34;',$singlequestion['2']);
@@ -678,7 +678,7 @@ $question_type=$this->lang->line('long_answer');
 	'question_type' => $question_type
 	);
 	
-	if($this->db->insert('savsoft_qbank',$insert_data)){
+	if($this->db->insert('e_learn_qbank',$insert_data)){
 	
 		$qid=$this->db->insert_id();
 		$prevoid=array();
@@ -696,7 +696,7 @@ $question_type=$this->lang->line('long_answer');
 				"q_option" => $singlequestion[$optionkeycounter],
 				"score" => $correctoption
 				);
-				$this->db->insert("savsoft_options",$insert_options);
+				$this->db->insert("e_learn_options",$insert_options);
 				$prevoid[]=$this->db->insert_id();
 				$optionkeycounter++;
 				}
@@ -730,7 +730,7 @@ $question_type=$this->lang->line('long_answer');
 				"q_option" => $singlequestion[$optionkeycounter],
 				"score" => $correctoptionm[$i-1]
 				);
-				$this->db->insert("savsoft_options",$insert_options);
+				$this->db->insert("e_learn_options",$insert_options);
 				$prevoid[]=$this->db->insert_id();
 				$optionkeycounter++;
 				
@@ -767,7 +767,7 @@ $question_type=$this->lang->line('long_answer');
 				"q_option_match" =>$explode_match[1] ,
 				 "score" => $correctoption
 				);
-				$this->db->insert("savsoft_options",$insert_options);
+				$this->db->insert("e_learn_options",$insert_options);
 				$prevoid[]=$this->db->insert_id();
 				$optionkeycounter++;
 				}
@@ -789,7 +789,7 @@ $question_type=$this->lang->line('long_answer');
 				"q_option" => $singlequestion[$optionkeycounter],
 				"score" => $correctoption
 				);
-				$this->db->insert("savsoft_options",$insert_options);
+				$this->db->insert("e_learn_options",$insert_options);
 				$prevoid[]=$this->db->insert_id();
 				$optionkeycounter++;
 				}
@@ -811,7 +811,7 @@ $question_type=$this->lang->line('long_answer');
 	'description1' => $description 
 	);
 	$this->db->where('qid',$prevqid);
-	 $this->db->update('savsoft_qbank',$update_data);
+	 $this->db->update('e_learn_qbank',$update_data);
 		 
 		
 		
@@ -843,7 +843,7 @@ $question_type=$this->lang->line('long_answer');
 				 "q_option1" => $singlequestion[$optionkeycounter],
 				 );
 				 $this->db->where('oid',$prevoid[$i-1]);
-				$this->db->update("savsoft_options",$insert_options);
+				$this->db->update("e_learn_options",$insert_options);
 				$optionkeycounter++;
 				}
 			
@@ -875,7 +875,7 @@ $question_type=$this->lang->line('long_answer');
 				 "q_option1" => $singlequestion[$optionkeycounter],
 				 );
 				 $this->db->where('oid',$prevoid[$i-1]);
-				$this->db->update("savsoft_options",$insert_options);
+				$this->db->update("e_learn_options",$insert_options);
 				$optionkeycounter++;
 				
 				
@@ -910,7 +910,7 @@ $question_type=$this->lang->line('long_answer');
 				"q_option_match1" =>$explode_match[1] ,
 				 );
 				$this->db->where('oid',$prevoid[$i-1]);
-				$this->db->update("savsoft_options",$insert_options);
+				$this->db->update("e_learn_options",$insert_options);
 				$optionkeycounter++;
 				}
 				
@@ -930,7 +930,7 @@ $question_type=$this->lang->line('long_answer');
 				 "q_option1" => $singlequestion[$optionkeycounter],
 				 );
 				$this->db->where('oid',$prevoid[$i-1]);
-				$this->db->update("savsoft_options",$insert_options);
+				$this->db->update("e_learn_options",$insert_options);
 				$optionkeycounter++;
 				}
 				

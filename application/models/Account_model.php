@@ -23,8 +23,8 @@ Class Account_model extends CI_Model
        if($this->input->post('users')){
        $userdata['users']=implode(',',$this->input->post('users'));
        }                 
-       if($this->input->post('quiz')){
-       $userdata['quiz']=implode(',',$this->input->post('quiz'));
+       if($this->input->post('exam')){
+       $userdata['exam']=implode(',',$this->input->post('exam'));
        }                 
        if($this->input->post('study_material')){
        $userdata['study_material']=implode(',',$this->input->post('study_material'));
@@ -61,10 +61,10 @@ Class Account_model extends CI_Model
        }else{
        $userdata['users']="";
        }                 
-       if($this->input->post('quiz')){
-       $userdata['quiz']=implode(',',$this->input->post('quiz'));
+       if($this->input->post('exam')){
+       $userdata['exam']=implode(',',$this->input->post('exam'));
        }else{
-       $userdata['quiz']="";
+       $userdata['exam']="";
        }                 
        if($this->input->post('result')){
        $userdata['results']=implode(',',$this->input->post('result'));
