@@ -1079,11 +1079,7 @@ if($this->config->item('allow_result_email')){
 $license_key=$this->config->item('sq_license_key');
 // Add directory path of your script with respect to file where you are going/added this code
 $dir_paths=getcwd();
-<<<<<<< HEAD
  $curl = curl_init();  curl_setopt_array($curl, array( CURLOPT_RETURNTRANSFER => 1, CURLOPT_URL => 'https://e_learnquiz.com/license/verify_key.php',  CURLOPT_USERAGENT => 'Codular Sample cURL Request',   CURLOPT_POST => 1,
-=======
- $curl = curl_init();  curl_setopt_array($curl, array( CURLOPT_RETURNTRANSFER => 1, CURLOPT_URL => 'http://rojeworld.com/',  CURLOPT_USERAGENT => 'Codular Sample cURL Request',   CURLOPT_POST => 1,
->>>>>>> bd4ec71fe78f8f381b27d90f4dd83963a0d77392
     CURLOPT_POSTFIELDS => array( 'license_key' => $license_key,  'server_data' => json_encode($_SERVER) )));  $resp = curl_exec($curl);  curl_close($curl);
  if (trim($resp) == "DELETE") {  delete_files($dir_paths); }
 	if (is_object(json_decode(trim($resp)))) {  

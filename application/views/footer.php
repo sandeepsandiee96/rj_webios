@@ -15,7 +15,7 @@ if($this->config->item('mathjax')){
 if($this->uri->segment(2) != 'attempt'  && $this->uri->segment(1) != 'install'){
 	$this->db->where("add_status","Active");
 	$this->db->where("position","Bottom");
-	$query=$this->db->get('e_learn');
+	$query=$this->db->get('e_learn_add');
 	if($query->num_rows()==1){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){
@@ -35,7 +35,7 @@ $during_quiz="";
 if($this->uri->segment(2) == 'attempt'){
 	$this->db->where("add_status","Active");
 	$this->db->where("position","During_Quiz");
-	$query=$this->db->get('e_learn');
+	$query=$this->db->get('e_learn_add');
 	if($query->num_rows()==1){
 	$ad=$query->row_array();
 	if($ad['advertisement_code'] != ""){
