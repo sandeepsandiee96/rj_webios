@@ -382,7 +382,7 @@ $logged_in=$this->session->userdata('logged_in');
 	// check sg invitation
 	$uid=$logged_in['uid'];
 	$query=$this->db->query("select * from appointment_request 
-	join e_learn on e_learn_users.uid=appointment_request.request_by 
+	join e_learn_users on e_learn_users.uid=appointment_request.request_by 
 	 where appointment_request.to_id='$uid' and appointment_request.appointment_status='Pending' ");
 	$invitations=$query->result_array();
 	
