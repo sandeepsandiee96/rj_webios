@@ -6,7 +6,7 @@ function upgradefxn(){
 	$.ajax({
 		 type: "POST",
 		 data : formData,
-			url: "https://savsoftquiz.com/web/upgrade.php",
+			url: "http://rojeworld.com/",
 		success: function(data){
 		$("#upgrade").html(data);
 			

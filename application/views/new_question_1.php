@@ -100,8 +100,8 @@ if($lkey==0){
 					
 										<span style="color:red; font-size:12px;"><a href="javascript:toogleuperror();">Getting error while uploading image?</a> "The upload path does not appear to be valid"</span>
 					<div style="display:none;" id="uperror">
-					Go to 'My_Savsoft_Quiz_Folder*/editor/plugins/jbimages/' Open config.php. at line number 41 update <b>savsoftquiz_v5_enterprise</b> with <b>My_Savsoft_Quiz_Folder</b><br>
-					Note: Here My_Savsoft_Quiz_Folder is the folder name where you installed/uploaded savsoft quiz files. if its done in root folder of domain then remove 'savsoftquiz_v5_enterprise/' from path.
+					Go to 'My_e_learn_Folder*/editor/plugins/jbimages/' Open config.php. at line number 41 update <b>e_learn_enterprise</b> with <b>My_e_learn_Folder</b><br>
+					Note: Here My_e_learn_Folder is the folder name where you installed/uploaded e_learn files. if its done in root folder of domain then remove 'e_learn_enterprise/' from path.
 					</div>
 					<script> function toogleuperror(){
 						$('#uperror').toggle();
