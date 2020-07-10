@@ -20,45 +20,37 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body>
+ <div class="container" >
+	    <div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4" >
 
-  <div class="container">
-
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-
-      <div class="col-xl-10 col-lg-12 col-md-9">
-
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block  " style="background:url('http://rojeworld.com/');background-position: center;
-    background-size: cover;"></div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
+			  <div class="shadow-lg p-4 mb-4 bg-white" style="text-align:center;margin-top:50px;">
+				
+				<div>
+                  
 				  <?php 
 				 $hquery=$this->db->query(" select * from e_learn_setting where setting_name='App_Name' || setting_name='App_title' order by setting_id asc "); 
 				$hres=$hquery->result_Array();
 				?>
-                    <h1 class="h4 text-gray-900 mb-4">
+                    <div style="padding-bottom:10px;"><img src="http://rojeworld.com/wp-content/uploads/2019/12/Rojeworld-original.png" height="60" width="180"></div>
+					<h1 class="h4 text-gray-900 mb-4">
 					
-					<?php if($hres[0]['setting_value']==""){ ?>E_learn<?php }else{ echo $hres[0]['setting_value']; }?> 
+	                 Login to Your Account
 					
 					</h1>
-                  </div>
                   <form class="user"  method="post" action="<?php echo site_url('login/verifylogin');?>">
 					 
-		<?php 
-		if($this->session->flashdata('message')){
-			?>
-			<div class="alert alert-danger">
-			<?php echo str_replace('{resend_url}',site_url('login/resend'),$this->session->flashdata('message'));?>
-			</div>
-		<?php	
-		}
-		?>	
+					<?php 
+					if($this->session->flashdata('message')){
+					?>
+					<div class="alert alert-danger">
+					<?php echo str_replace('{resend_url}',site_url('login/resend'),$this->session->flashdata('message'));?>
+					</div>
+					<?php	
+					}
+					?>	
 		
 		
 		
@@ -68,61 +60,38 @@
                     <div class="form-group">
                       <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="<?php echo $this->lang->line('password');?>">
                     </div>
-                    <div class="form-group">
-                      
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                   <div>
+                   <label class="checkbox" style="color:black;"><input type="checkbox"> Remember me</label> &nbsp;&nbsp;&nbsp;&nbsp;
+				  
+                    <a class="small" href="<?php echo site_url('login/forgot');?>"><?php echo $this->lang->line('forgot_password');?> </a>
+					<?php 
+					if($this->config->item('open_quiz')){
+					?>			 
+					&nbsp;&nbsp;&nbsp;<a class="small" href="<?php echo site_url('quiz/open_quiz/0');?>"  ><?php echo $this->lang->line('open_quizzes');?></a>
+			 
+					<?php 
+					}
+					?>
+				  </div>
+                    <button type="submit" class="btn btn-success" style="font-size:15px">
                       Login
                     </button>
                   
-                  </form>
-				  
-				     <div class="text-center">
-                    <a class="small" href="<?php echo site_url('login/forgot');?>"><?php echo $this->lang->line('forgot_password');?> </a>
-					<?php 
-if($this->config->item('open_quiz')){
-	?>			 
-			&nbsp;&nbsp;&nbsp;<a class="small" href="<?php echo site_url('quiz/open_quiz/0');?>"  ><?php echo $this->lang->line('open_quizzes');?></a>
-			 
-			<?php 
-			}
-			?>
-			
-                  </div>
-				  
-				  
-				  
-                  <hr>
-               
-                  <div class="text-center">
-                    <a class="btn btn-danger btn-user btn-block" href="<?php echo site_url('login/pre_registration');?>"><?php echo $this->lang->line('register_new_account');?></a>
-                   
-				  <p style="margin-top:40px;""><a class="small" href="http://rojeworld.com/" style="float:right;">E_learn</a></p>
- 
-				 </div>
+                  </form>               
+				 
                 </div>
-              </div>
-            </div>
-          </div>
+               
+			</div>
+
+			<div class="text-center">Don't have an account? <a href="<?php echo site_url('login/registration');?>">Sign up</a></div>
+           </div>
+		   
         </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url();?>vendor/jquery/jquery.min.js"></script>
-  <script src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url();?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url();?>js/sb-admin-2.min.js"></script>
-
+		
+ </div>
+ 
 </body>
-
+ 
 </html>
 
 
