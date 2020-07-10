@@ -152,9 +152,9 @@
 </div>
 
 
-        <!-- recent users -->
+        <!-- recent users 
 
-        <div class="card  shadow  py-2" style="margin-top:20px;">
+       <div class="card  shadow  py-2" style="margin-top:20px;">
           <div class="card-heading" style="padding:5px;">
 		 <h6 class="m-0 font-weight-bold text-primary" >
             <?php echo $this->lang->line('recently_registered');?> 
@@ -197,11 +197,11 @@ foreach($result as $key => $val){
      
             </tbody></table>
           </div>
-        </div>
+        </div> -->
 
-        <!-- recent users -->
+        <!-- recent users --> 
 
-      </div>
+       </div>
       <div class="col-lg-5">
 	  
 	  
@@ -215,11 +215,11 @@ $revenue_months2[]=floatval($fv);
  
 <?php 
  
-$months=array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+//$months=array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 ?>		  
 	  
-	                <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+	             <!-- <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown 
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary"><?php echo $this->lang->line('revenue');?>
 				  
@@ -253,8 +253,8 @@ $cal=number_format(((($revenue_months[$todaymonth]-$revenue_months[$pastmonth])/
 				  
 				  </h6>
                
-                </div>
-                <!-- Card Body -->
+                </div> 
+                <!-- Card Body 
                 <div class="card-body">
                   
 		  
@@ -293,7 +293,8 @@ var myChart = new Chart(ctx, {
 				  
 				  
 				  
-                </div>
+                </div> -->
+				
                
 
 
@@ -305,7 +306,7 @@ var myChart = new Chart(ctx, {
 
 
 
-        <!-- References -->
+        <!-- References 
 
         <div class="panel">
           <div class="panel-heading">
@@ -381,14 +382,15 @@ foreach($payments as $key => $val){
 
 
 </div>
- 
+ <!--
 <div class="row text-center" style="margin-top:30px;">
  
 <?php 
-echo "Page rendered in <strong> {elapsed_time} </strong> seconds. You may improve it by hosting on recommended hosting. <a href='http://savsoftquiz.com/affiliate.php' target='af'>Click here</a> ";
+//echo "Page rendered in <strong> {elapsed_time} </strong> seconds. You may improve it by hosting on recommended hosting. <a href='http://savsoftquiz.com/affiliate.php' target='af'>Click here</a> ";
 ?>
 </div>
 
 <script>
 update_check('5');
 </script>
+-->

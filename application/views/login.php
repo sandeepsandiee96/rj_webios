@@ -44,7 +44,7 @@
 				?>
                     <h1 class="h4 text-gray-900 mb-4">
 					
-					<?php if($hres[0]['setting_value']==""){ ?>E_learn<?php }else{ echo $hres[0]['setting_value']; }?> 
+					<?php if($hres[0]['setting_value']==""){ ?>e_learn<?php }else{ echo $hres[0]['setting_value']; }?> 
 					
 					</h1>
                   </div>

@@ -301,8 +301,9 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 ?>
  <?php 
  if(!in_array('List_all',explode(',',$logged_in['quiz']))){
-?>  
+?> <!-- 
 <a href="<?php echo site_url('user/switch_group');?>" class="btn btn-danger" style="border-radius:0px;"><?php echo $this->lang->line('change_group');?></a>
+-->
 <?php 
 }
 ?>
@@ -310,7 +311,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 <?php 
 if(in_array('All',explode(',',$logged_in['setting']))){
 ?>
-     <!-- Nav Item - Pages Collapse Menu -->
+     <!-- Nav Item - Pages Collapse Menu 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupport" aria-expanded="true" aria-controls="collapseStudy">
           <i class="fas fa-fw fa-question-circle"></i>
@@ -330,8 +331,9 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 		<?php 
 if(in_array('All',explode(',',$logged_in['setting']))){
 ?> 
+-->
 
-  <!-- Nav Item - Pages Collapse Menu -->
+  <!-- Nav Item - Pages Collapse Menu 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLanding" aria-expanded="true" aria-controls="collapseStudy">
           <i class="fas fa-fw fa-puzzle-piece"></i>
@@ -352,7 +354,7 @@ if(in_array('All',explode(',',$logged_in['setting']))){
 
  <?php 
 }
-?>  
+?>  -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -393,14 +395,14 @@ $logged_in=$this->session->userdata('logged_in');
 	?>
 	
 	  
-	              <!-- Nav Item - Alerts -->
+	              <!-- Nav Item - Alerts 
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+                <!-- Counter - Alerts 
                 <span class="badge badge-danger badge-counter"><?php echo count($invitations)+count($notifications);?></span>
               </a>
-              <!-- Dropdown - Alerts -->
+              <!-- Dropdown - Alerts 
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                  Notification
