@@ -37,7 +37,11 @@
                     <div style="padding-bottom:10px;"><img src="http://rojeworld.com/wp-content/uploads/2019/12/Rojeworld-original.png" height="60" width="180"></div>
 					<h1 class="h4 text-gray-900 mb-4">
 					
+<<<<<<< HEAD
+					<?php if($hres[0]['setting_value']==""){ ?>e_learn<?php }else{ echo $hres[0]['setting_value']; }?> 
+=======
 	                 Login to Your Account
+>>>>>>> 5ecb4c685a024236ebfc2275e1060418e3c0e8cd
 					
 					</h1>
                   <form class="user"  method="post" action="<?php echo site_url('login/verifylogin');?>">

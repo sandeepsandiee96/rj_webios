@@ -81,7 +81,7 @@ $('#advertisement_bg').css('display','none');
 	?>
 	 
 <div class="container" style="text-align:right;">
-Powered by <a href="http://rojeworld.com/">E_learn</a>
+Powered by <a href="http://rojeworld.com/"> Rojeworld It Services</a>
 </div>
 </div>	   
 		
