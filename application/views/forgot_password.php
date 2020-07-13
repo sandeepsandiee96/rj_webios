@@ -10,14 +10,13 @@
 <div class="col-md-4">
 </div>
 <div class="col-md-4">
+			  <div class="shadow-lg p-4 mb-4 bg-white" style="text-align:center;margin-top:50px;">
 
 	<div class="login-panel panel panel-default">
 		<div class="panel-body"> 
-		<img src="<?php echo base_url('images/logo.png');?>">
-		
 
 			<form method="post" class="form-signin" action="<?php echo site_url('login/forgot');?>">
-					<h2 class="form-signin-heading"><?php echo $this->lang->line('login');?></h2>
+					<h2 style="">Forgot Password</h2>
 		<?php 
 		if($this->session->flashdata('message')){
 			?>
@@ -44,13 +43,14 @@ if($this->config->item('user_registration')){
 <?php
 }
 ?>
-	<a href="<?php echo site_url('login');?>"><?php echo $this->lang->line('login');?></a>
 
 			</form>
 		</div>
 	</div>
-
 </div>
+<div class="text-center">Don't have an account? <a href="<?php echo site_url('login/registration');?>">Sign up</a></div>
+</div>
+
 <div class="col-md-4">
 
 
