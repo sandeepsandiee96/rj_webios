@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Userdashboard extends CI_Controller {
 
 	 function __construct()
 	 {
@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
 	   $this->load->model("qbank_model");
 	   $this->load->model("quiz_model");
 	   $this->load->model("result_model");
+	   $this->load->model("Studymaterial_model");
 	   $this->lang->load('basic', $this->config->item('language'));
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
@@ -29,27 +30,25 @@ class Dashboard extends CI_Controller {
 	{
 		$data['title']=$this->lang->line('dashboard');
 		
-			$logged_in=$this->session->userdata('logged_in');
-                        $acp=explode(',',$logged_in['setting']);
-			if(in_array('All',$acp)){
+		$a=$this->session->userdata('logged_in');
+		
 			
-		$data['result']=$this->user_model->user_list(0);
+		$data['result']=$this->user_model->num_result;
 		$data['active_users']=$this->user_model->status_users('Active');
 		$data['inactive_users']=$this->user_model->status_users('Inactive');
 		$data['payments']=$this->user_model->recent_payments(10);
 		$data['revenue_months']=$this->user_model->revenue_months();
+		$data['active']=$this->quiz_model->quizstat('active');
 				
 				
 		$data['num_users']=$this->user_model->num_users();
 		$data['num_qbank']=$this->qbank_model->num_qbank();
 		$data['num_quiz']=$this->quiz_model->num_quiz();
+		$data['num_result']=$this->user_model->num_result($a['uid']);
+		$data['num_studymaterial']=$this->Studymaterial_model->num_studymaterail();
 		
-		
-			}
-			
-
 		$this->load->view('header',$data);
-		$this->load->view('dashboard',$data);
+		$this->load->view('userdashboard',$data);
 		$this->load->view('footer',$data);
 	}
 	
@@ -128,3 +127,4 @@ class Dashboard extends CI_Controller {
 		
 	
 }
+

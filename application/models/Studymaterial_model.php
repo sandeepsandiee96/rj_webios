@@ -33,6 +33,12 @@ class Studymaterial_model extends CI_Model
         $query = $this->db->get('e_learn_category');
         return $query->result_array();
     }
+    
+    function num_studymaterail()
+    {
+        $query = $this->db->get('study_material');
+        return $query->num_rows();
+    }
 
     function getgroup_list()
     {

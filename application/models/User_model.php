@@ -235,7 +235,14 @@ class User_model extends CI_Model
             return false;
         }
     }
-
+    
+    function num_result($id)
+    {
+        $query = $this->db->query("select *from e_learn_result where uid='$id' ");
+         return $query->num_rows();
+    }
+    
+   
     function num_users()
     {
         $query = $this->db->get('e_learn_users');

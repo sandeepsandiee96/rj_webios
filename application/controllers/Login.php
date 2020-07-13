@@ -197,6 +197,15 @@ class Login extends CI_Controller {
 				$burl=$this->config->item('base_url').'index.php/quiz';
 			 header("location:$burl");
 			}
+			
+			if($user['su']=='2'){
+			    redirect('userdashboard');
+			    
+			}else{
+			    $burl=$this->config->item('base_url').'index.php/quiz';
+			    header("location:$burl");
+			}
+			
 		}else if($status['status']=='0'){
 			 
 			// invalid login

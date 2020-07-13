@@ -118,6 +118,16 @@ if(in_array('All',explode(',',$logged_in['setting']))){
           <span><?php echo $this->lang->line('dashboard');?></span></a>
       </li>
 <?php } ?>
+ <?php 
+if($logged_in['su'] == '2'){
+?>			
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo site_url('userdashboard');?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span> User Dashboard</span></a>
+      </li>
+<?php } ?>
       <!-- Divider -->
       <hr class="sidebar-divider">
 

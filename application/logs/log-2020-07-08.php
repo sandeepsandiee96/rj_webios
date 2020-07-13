@@ -646,3 +646,37 @@ ERROR - 2020-07-08 13:36:52 --> Severity: Notice --> Undefined index: Master_pas
 ERROR - 2020-07-08 13:36:52 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
 ERROR - 2020-07-08 13:37:17 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
 ERROR - 2020-07-08 13:37:17 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
+ERROR - 2020-07-08 15:22:01 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:22:40 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:03 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:03 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:04 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
+ERROR - 2020-07-08 15:23:23 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:23 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
+ERROR - 2020-07-08 15:23:27 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:27 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 15:23:27 --> Could not find the language line "e_learn"
+ERROR - 2020-07-08 16:22:01 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 16:22:02 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 16:22:02 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
+ERROR - 2020-07-08 16:39:31 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 16:39:43 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:05:17 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:05:18 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:06:24 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:06:24 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:06:24 --> Could not find the language line "e_learn"
+ERROR - 2020-07-08 17:38:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:38:54 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:38:54 --> Severity: Warning --> Division by zero C:\xampp\htdocs\rj_webios\application\views\dashboard.php 237
+ERROR - 2020-07-08 17:40:52 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:40:53 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:40:57 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:44:06 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:44:06 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:20 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:29 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:30 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:34 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:35 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\rj_webios\application\config\config.php 524
+ERROR - 2020-07-08 17:48:35 --> Could not find the language line "e_learn"

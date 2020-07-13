@@ -26,6 +26,7 @@ $lang['send'] = "Send";
 $lang['proctor'] = "Proctor";
 $lang['link_sent'] = "Verification link sent successfully!";
 $lang['dashboard'] = "Dashboard";
+$lang['userdashboard'] = "Userdashboard";
 $lang['users'] = "Users";
 $lang['myaccount'] = "My Account";
 $lang['qbank'] = "Question Bank";
